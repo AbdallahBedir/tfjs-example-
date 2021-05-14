@@ -1,11 +1,14 @@
 const express = require('express')
 const multer = require('multer')
-const sharp = require('sharp')
+//const sharp = require('sharp')
 const path = require('path')
-const tf = require('@tensorflow/tfjs')
+const cors = require("cors");
+//const tf = require('@tensorflow/tfjs')
 
 const app = express()
 const port = process.env.PORT || 3000
+
+app.use(cors());
 
 const publicDirectoryPath = path.join(__dirname, './public')
 // Setup static directory to serve
@@ -28,15 +31,15 @@ const upload = multer({
 
 app.post('/upload', upload.single('avatar'), async (req, res) => {
     try {
-        const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).jpeg().toBuffer()
-        const model = await tf.loadLayersModel('http://localhost:3000/model.json');
-        console.log(`===============model===================`,model)
+        //const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).jpeg().toBuffer()
+        // const model = await tf.loadLayersModel('http://localhost:3000/model.json');
+        // console.log(`===============model===================`,model)
         // req.user.avatar = buffer
         // await req.user.save()
         res.send({
             success:true,
             //model:model,
-            output:buffer
+            output:req.file.buffer
         })
     } catch (e) {
         console.log(`e`,e)

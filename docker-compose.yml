@@ -1,0 +1,14 @@
+version: "2"
+services:
+  back_end:
+    build: 
+        context: ./back-end
+    # image: "my_node"
+    ports: 
+        - 3000:3000
+  front_end:
+    build: 
+        context: ./front-end
+    # image: "my_node"
+    ports: 
+        - 4000:4000

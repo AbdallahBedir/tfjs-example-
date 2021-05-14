@@ -2,17 +2,17 @@ import axios from "axios";
 import { useReducer, useCallback } from "react";
 
 /// API base URL
-const BASE_URL = "https://cat-or-not-2d93d-default-rtdb.firebaseio.com";
+const BASE_URL = "http://localhost:3000";
 
 /// API Methods
 export const postPhoto = async photo => {
   let formData = new FormData();
-  formData.append("photo", photo.file, photo.file.name);
+  formData.append("avatar", photo.file, photo.file.name);
 
   // prepare request Configeration
   const requestConfig = {
     method: "post",
-    url: `${BASE_URL}/photos`,
+    url: `${BASE_URL}/upload`,
     headers: {
       "content-type": "multipart/form-data",
     },
