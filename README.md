@@ -2,6 +2,6 @@
 Simple tfjs app to detect uploaded images 
 
 # How to use
-- docker-compose build
-- docker-compose up
-- Navigate to `http://localhost:4000/`
+1. docker-compose build
+2. docker-compose up
+3. Navigate to `http://localhost:4000/`
